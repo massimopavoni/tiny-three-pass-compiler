@@ -33,19 +33,15 @@ impl Optimizer {
                 let l = Self::optimize_recursion(*left);
                 let r = Self::optimize_recursion(*right);
 
-                if let Value(Imm, l) = l {
-                    if let Value(Imm, r) = r {
-                        let result = match op {
-                            Add => l + r,
-                            Sub => l - r,
-                            Mul => l * r,
-                            Div => l / r,
-                        };
-                        return imm!(result);
-                    }
+                match (&l, &r) {
+                    (Value(Imm, l), Value(Imm, r)) => imm!(match op {
+                        Add => l + r,
+                        Sub => l - r,
+                        Mul => l * r,
+                        Div => l / r,
+                    }),
+                    _ => Ast::binop(op, l, r),
                 }
-
-                Ast::binop(op, l, r)
             }
         }
     }
