@@ -1,0 +1,22 @@
+[package]
+name = "tiny-three-pass-compiler"
+version = "1.0.0"
+authors = ["Massimo Pavoni"]
+repository = "https://github.com/massimopavoni/tiny-three-pass-compiler"
+license-file = "LICENSE"
+edition = "2024"
+rust-version = "1.88"
+
+[lints.clippy]
+nursery = "warn"
+pedantic = "warn"
+
+[profile.dev]
+overflow-checks = false
+
+[profile.release]
+codegen-units = 1
+lto = "fat"
+opt-level = 3
+strip = true
+# debug = true
