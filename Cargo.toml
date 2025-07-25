@@ -1,6 +1,6 @@
 [package]
 name = "tiny-three-pass-compiler"
-version = "1.0.0"
+version = "0.1.0"
 authors = ["Massimo Pavoni"]
 repository = "https://github.com/massimopavoni/tiny-three-pass-compiler"
 license-file = "LICENSE"
